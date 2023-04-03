@@ -1,8 +1,5 @@
 function App() {
-  let message = "Bye there";
-  if (Math.random() > 0.5) {
-    message = "Hello there";
-  }
+  let message = {};
   return <h1>{message}</h1>;
 }
 
