@@ -1,8 +1,10 @@
+import "./TaskCard.css";
+
 const TaskCard = (props) => {
   const { title } = props;
   return (
-    <div>
-      <h1>{title}</h1>
+    <div className="TaskItem">
+      <h2 className="text-xl font-bold ">{title}</h2>
       <p>Completed on</p>
       <p>Assigned: name</p>
     </div>
