@@ -1,6 +1,5 @@
 import TaskCard from "./TaskCard";
 function App() {
-  let message = {};
   return (
     <div className="container m-5 p-5 mx-auto">
       <h1 className="font-bold text-3xl mb-2">Smarter Tasks</h1>
