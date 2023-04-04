@@ -1,12 +1,16 @@
 import "./TaskCard.css";
 
 const TaskCard = (props) => {
-  const { title } = props;
+  const { title, dueDate, completedAtDate, assigneeName } = props;
   return (
     <div className="TaskItem">
       <h2 className="text-xl font-bold ">{title}</h2>
-      <p>Completed on</p>
-      <p>Assigned: name</p>
+      {dueDate ? (
+        <p>Due on: {dueDate}</p>
+      ) : (
+        <p>Completed on: {completedAtDate}</p>
+      )}
+      <p>Assignee: {assigneeName}</p>
     </div>
   );
 };

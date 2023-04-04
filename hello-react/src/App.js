@@ -24,11 +24,36 @@ function App() {
             dueDate="22nd March"
             assigneeName="Rohit M"
           />
+          <button className="bg-gray-300 w-full my-3 flex p-3 text-lg">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 6v12m6-6H6"
+              />
+            </svg>
+            New task
+          </button>
         </div>
         <div className="p-5 border-4 rounded-xl">
           <h1 className="text-center mb-3 font-bold text-2xl">Done</h1>
-          <TaskCard title="Add Tailwind" />
-          <TaskCard title="Submit for review" />
+          <TaskCard
+            title="Design the mockup"
+            completedAtDate="10th April"
+            assigneeName="Rohit M"
+          />
+          <TaskCard
+            title="Get the approval from principal"
+            completedAtDate="20th April"
+            assigneeName="Ajay S"
+          />
         </div>
       </div>
     </div>
