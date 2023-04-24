@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskItem } from "./type";
+import { TaskItem } from "./types";
 import TaskForm from "./TaskForm";
 import TaskList from "./TaskList";
 
