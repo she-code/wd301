@@ -2,7 +2,7 @@ import React from "react";
 import "./TaskCard.css";
 interface TaskProp {
   title: string;
-  dueDate: Date;
+  dueDate: string;
   description: string;
 }
 class Task extends React.Component<TaskProp> {
@@ -10,9 +10,7 @@ class Task extends React.Component<TaskProp> {
     return (
       <div className="TaskItem shadow-md border border-slate-100">
         <h2 className="text-base font-bold my-1">{this.props.title}</h2>
-        <p className="text-sm text-slate-500">
-          {this.props.dueDate.toISOString().split("T")[0]}
-        </p>
+        <p className="text-sm text-slate-500">{this.props.dueDate}</p>
         <p className="text-sm text-slate-500">
           Description: {this.props.description}
         </p>

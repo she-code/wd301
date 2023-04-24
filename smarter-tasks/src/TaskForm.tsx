@@ -6,7 +6,7 @@ interface TaskFormProps {
 interface TaskFormState {
   title: string;
   description?: string;
-  dueDate: Date;
+  dueDate: string;
 }
 class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
   constructor(props: TaskFormProps) {
@@ -14,7 +14,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
     this.state = {
       title: "",
       description: "",
-      dueDate: new Date(),
+      dueDate: "",
     };
   }
   addTask: React.FormEventHandler<HTMLFormElement> = (event) => {
@@ -32,7 +32,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
       dueDate: this.state.dueDate,
     };
     this.props.addTask(newTask);
-    this.setState({ title: "" });
+    this.setState({ title: "", description: "", dueDate: "" });
   };
   titleChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
     this.setState({ title: event.target.value });
@@ -41,7 +41,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
     this.setState({ description: event.target.value });
   };
   dateChanged: React.ChangeEventHandler<HTMLInputElement> = (event) => {
-    this.setState({ dueDate: new Date(event.target.value) });
+    this.setState({ dueDate: event.target.value });
   };
   render() {
     return (
@@ -49,7 +49,7 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
         <div className="p-3">
           <input
             className="focus:outline-none border-2 border-gray-500 focus:border-green-600 p-2 rounded-lg w-full"
-            id="todoTitle "
+            id="todoTitle"
             type="text"
             value={this.state.title}
             onChange={this.titleChanged}
@@ -66,10 +66,10 @@ class TaskForm extends React.Component<TaskFormProps, TaskFormState> {
         </div>
         <div className="p-3">
           <input
-            type="date"
+            type="text"
             className="focus:outline-none border-2 border-gray-500 focus:border-green-600 p-2 rounded-lg w-full"
             id="todoDueDate"
-            value={this.state.dueDate.toISOString().split("T")[0]}
+            value={this.state.dueDate}
             onChange={this.dateChanged}
           />
         </div>
