@@ -18,8 +18,7 @@ const Task = (props: {
       <div className="flex justify-between">
         <h2 className="text-base font-bold my-1">{tasks.title}</h2>
         <button
-          className="bg-green-500 text-white rounded px-2 py-1  deleteTaskButton
-          "
+          className="deleteTaskButton"
           onClick={() => props.handleDeleteCB(tasks.id)}
         >
           Delete
