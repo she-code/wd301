@@ -30,6 +30,7 @@ const TaskApp = (props: TaskAppProp) => {
   }, [taskAppState.tasks]);
   const addTask = (task: TaskItem) => {
     setTaskAppState({ tasks: [...taskAppState.tasks, task] });
+    console.log(task);
   };
   const deleteTask = (id: number) => {
     const previousState = { ...taskAppState };

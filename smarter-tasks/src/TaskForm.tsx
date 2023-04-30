@@ -40,7 +40,12 @@ const TaskForm = (props: TaskFormProps) => {
       return;
     }
     props.addTask(formState);
-    setFormState({ id: 0, title: "", description: "", dueDate: "" });
+    setFormState({
+      id: Number(new Date()),
+      title: "",
+      description: "",
+      dueDate: "",
+    });
   };
   return (
     <form onSubmit={addTask}>
