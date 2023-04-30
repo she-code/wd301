@@ -1,11 +1,17 @@
 import React from "react";
+import { Routes, Route } from "react-router-dom";
+
 import TaskApp from "./TaskApp";
+import HomePage from "./HomePage";
+import TaskDetailsPage from "./TaskDetailsPage";
 
 function App() {
   return (
-    <div className="App">
-      <TaskApp />
-    </div>
+    <Routes>
+      <Route path="/" element={<HomePage />} />
+      <Route path="/tasks" element={<TaskApp />} />
+      <Route path="/tasks/:id" element={<TaskDetailsPage />} />
+    </Routes>
   );
 }
 
