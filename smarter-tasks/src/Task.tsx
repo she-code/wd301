@@ -1,6 +1,7 @@
 import React from "react";
 import "./TaskCard.css";
 import { TaskItem } from "./types";
+import { Link } from "react-router-dom";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 interface TaskProp {
   title: string;
@@ -16,7 +17,9 @@ const Task = (props: {
   return (
     <li className="TaskItem shadow-md border border-slate-100 list-none">
       <div className="flex justify-between">
-        <h2 className="text-base font-bold my-1">{tasks.title}</h2>
+        <Link to={`/tasks/${tasks.id}`}>
+          <h2 className="text-base font-bold my-1">{tasks.title}</h2>
+        </Link>{" "}
         <button
           className="deleteTaskButton"
           onClick={() => props.handleDeleteCB(tasks.id)}
