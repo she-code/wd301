@@ -1,26 +1,31 @@
 import React from "react";
-import { Routes, Route, useLocation, Navigate } from "react-router-dom";
+import { Routes, Route, useLocation, Navigate, Form } from "react-router-dom";
 
-import TaskApp from "./TaskApp";
-import HomePage from "./HomePage";
-import TaskDetailsPage from "./TaskDetailsPage";
-import Header from "./Header";
-import Signin from "./Signin";
-import { ProtectedRoute } from "./ProtectedRoute";
 import NotFound from "./NotFound";
+import Signup from "./pages/signup";
+import Signin from "./pages/singin";
 
 function App() {
   const location = useLocation();
 
   return (
     <div>
-      {location.pathname === "/" ||
+      <Routes>
+        <Route path="/" element={<Signup />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/signin" element={<Signin />} />
+        <Route path="/notfound" element={<NotFound />} />
+        <Route path="*" element={<Navigate to="/notfound" />} />
+      </Routes>
+      {/* <Form /> */}
+      {/* {location.pathname === "/" ||
       location.pathname === "/tasks" ||
       location.pathname === "/tasks/:id" ? (
         <Header />
       ) : (
         ""
       )}
+
       <Routes>
         <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />
         <Route
@@ -31,10 +36,10 @@ function App() {
           path="/tasks/:id"
           element={<ProtectedRoute element={<TaskDetailsPage />} />}
         />
-        <Route path="/signin" element={<Signin />} />
+        <Route path="/signin" element={<Form />} />
         <Route path="/notfound" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/notfound" replace />} />
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
