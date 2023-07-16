@@ -4,6 +4,8 @@ import { Routes, Route, useLocation, Navigate, Form } from "react-router-dom";
 import NotFound from "./NotFound";
 import Signup from "./pages/signup";
 import Signin from "./pages/singin";
+import { ProtectedRoute } from "./ProtectedRoute";
+import Dashboard from "./pages/dashboard";
 
 function App() {
   const location = useLocation();
@@ -14,6 +16,10 @@ function App() {
         <Route path="/" element={<Signup />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/signin" element={<Signin />} />
+        <Route
+          path="/dashboard"
+          element={<ProtectedRoute element={<Dashboard />} />}
+        />
         <Route path="/notfound" element={<NotFound />} />
         <Route path="*" element={<Navigate to="/notfound" />} />
       </Routes>
