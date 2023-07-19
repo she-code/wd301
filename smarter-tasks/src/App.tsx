@@ -1,51 +1,24 @@
-import React from "react";
-import { Routes, Route, useLocation, Navigate, Form } from "react-router-dom";
+import React, { useContext } from "react";
+import { RouterProvider } from "react-router-dom";
+import { ThemeContext } from "./context/theme";
 
-import NotFound from "./NotFound";
-import Signup from "./pages/signup";
-import Signin from "./pages/signin";
-import { ProtectedRoute } from "./ProtectedRoute";
-import Dashboard from "./pages/dashboard";
+import router from "./routes";
+import { ProjectsProvider } from "./context/projects/context";
+import { MembersProvider } from "./context/members/context";
 
 function App() {
-  const location = useLocation();
+  const currentTheme = useContext(ThemeContext);
+  const { theme } = useContext(ThemeContext);
 
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Signup />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/signin" element={<Signin />} />
-        <Route
-          path="/dashboard"
-          element={<ProtectedRoute element={<Dashboard />} />}
-        />
-        <Route path="/notfound" element={<NotFound />} />
-        <Route path="*" element={<Navigate to="/notfound" />} />
-      </Routes>
-      {/* <Form /> */}
-      {/* {location.pathname === "/" ||
-      location.pathname === "/tasks" ||
-      location.pathname === "/tasks/:id" ? (
-        <Header />
-      ) : (
-        ""
-      )}
-
-      <Routes>
-        <Route path="/" element={<ProtectedRoute element={<HomePage />} />} />
-        <Route
-          path="/tasks"
-          element={<ProtectedRoute element={<TaskApp />} />}
-        />
-        <Route
-          path="/tasks/:id"
-          element={<ProtectedRoute element={<TaskDetailsPage />} />}
-        />
-        <Route path="/signin" element={<Form />} />
-        <Route path="/notfound" element={<NotFound />} />
-        <Route path="*" element={<Navigate to="/notfound" replace />} />
-      </Routes> */}
+    <div
+      className={`h-full w-full mx-auto py-2 ${theme === "dark" ? "dark" : ""}`}
+    >
+      <ProjectsProvider>
+        <MembersProvider>
+          <RouterProvider router={router} />
+        </MembersProvider>
+      </ProjectsProvider>
     </div>
   );
 }
