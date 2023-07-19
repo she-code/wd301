@@ -3,6 +3,8 @@ import { RouterProvider } from "react-router-dom";
 import { ThemeContext } from "./context/theme";
 
 import router from "./routes";
+import { ProjectsProvider } from "./context/projects/context";
+import { MembersProvider } from "./context/members/context";
 
 function App() {
   const currentTheme = useContext(ThemeContext);
@@ -12,8 +14,11 @@ function App() {
     <div
       className={`h-full w-full mx-auto py-2 ${theme === "dark" ? "dark" : ""}`}
     >
-      {currentTheme.theme}
-      <RouterProvider router={router} />
+      <ProjectsProvider>
+        <MembersProvider>
+          <RouterProvider router={router} />
+        </MembersProvider>
+      </ProjectsProvider>
     </div>
   );
 }

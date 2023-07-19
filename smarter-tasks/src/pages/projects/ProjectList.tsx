@@ -1,85 +1,26 @@
-import React, { useState, useEffect, useReducer } from "react";
-import { API_ENDPOINT } from "../../config/constants";
-interface Project {
-  id: number;
-  name: string;
-}
-interface State {
-  projects: Project[];
-  isLoading: boolean;
-}
-interface Action {
-  type: string;
-  payload?: any;
-}
-const reducer = (state: State, action: Action): State => {
-  if (action.type === "API_CALL_START") {
-    return {
-      ...state,
-      isLoading: true,
-    };
-  }
-  if (action.type === "API_CALL_END") {
-    return {
-      ...state,
-      isLoading: false,
-      projects: action.payload,
-    };
-  }
-  if (action.type === "API_CALL_ERROR") {
-    return {
-      ...state,
-      isLoading: false,
-    };
-  }
-  return state;
-};
-const ProjectList: React.FC = () => {
-  // const [projects, setProjects] = useState<Project[]>([]);
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [state, dispatch] = useReducer(reducer, {
-    projects: [],
-    isLoading: false,
-  });
-  useEffect(() => {
-    // Fetch the list of projects here
-    console.log("Fetching projects...");
-    fetchProjects();
-  }, []);
-  const fetchProjects = async () => {
-    const token = localStorage.getItem("authToken") ?? "";
+import React, { useEffect } from "react";
+import { fetchProjects } from "../../context/projects/actions";
 
-    try {
-      // setIsLoading(true);
-      dispatch({ type: "API_CALL_START" });
-      const response = await fetch(`${API_ENDPOINT}/projects`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const data = await response.json();
-      dispatch({ type: "API_CALL_END", payload: data });
-      console.log(data, "data");
-    } catch (error) {
-      console.log("Error fetching projects:", error);
-      dispatch({ type: "API_CALL_ERROR" });
-      // setIsLoading(false);
-    }
-  };
+// So, let's import the useProjectsDispatch custom hook.
+import { useProjectsDispatch } from "../../context/projects/context";
+
+// I'll import the ProjectListItems component from the same folder.
+// This I'll define next.
+import ProjectListItems from "./ProjectListItems";
+const ProjectList: React.FC = () => {
+  // I'll define a new constant called dispatchProjects,
+  // to call the useProjectsDispatch() hook.
+  const dispatchProjects = useProjectsDispatch();
+
+  useEffect(() => {
+    // And I'll pass the `dispatchProjects` to `fetchProjects` function.
+    fetchProjects(dispatchProjects);
+  }, []);
   return (
-    <div>
-      <h2>Project List</h2>
-      {state.isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <ul>
-          {state.projects.map((project: any) => (
-            <li key={project.id}>{project.name}</li>
-          ))}
-        </ul>
-      )}
+    <div className="grid gap-4 grid-cols-4 mt-5">
+      {/*To keep this file clean, I'll move all the logic to access the projects 
+       from our app-state, to a new component ProjectListItems */}
+      <ProjectListItems />
     </div>
   );
 };
