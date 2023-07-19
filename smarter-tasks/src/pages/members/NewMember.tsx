@@ -88,6 +88,7 @@ const NewMember = () => {
                       <input
                         type="text"
                         placeholder="Enter member name..."
+                        id="name"
                         autoFocus
                         {...register("name", { required: true })}
                         className={`w-full border rounded-md py-2 px-3 my-4 text-gray-700 leading-tight focus:outline-none focus:border-blue-500 focus:shadow-outline-blue ${
@@ -101,6 +102,7 @@ const NewMember = () => {
                       )}
                       <input
                         type="email"
+                        id="email"
                         placeholder="Enter member email..."
                         autoFocus
                         {...register("email", { required: true })}
@@ -115,6 +117,7 @@ const NewMember = () => {
                       )}
                       <input
                         type="password"
+                        id="password"
                         placeholder="Enter password..."
                         autoFocus
                         {...register("password", { required: true })}
@@ -129,6 +132,7 @@ const NewMember = () => {
                       )}
                       <br />
                       <button
+                        id="create-member-btn"
                         type="submit"
                         className="inline-flex justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 mr-2 text-sm font-medium text-white hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       >

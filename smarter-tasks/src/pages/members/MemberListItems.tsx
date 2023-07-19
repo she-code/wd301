@@ -25,13 +25,19 @@ export default function MemberListItems() {
           key={index}
           className="block p-6 bg-white border border-gray-200 rounded-lg shadow
            hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 mr-2 overflow-x-auto
-           dark:hover:bg-gray-700"
+           dark:hover:bg-gray-700 member"
         >
           <div className="flex justify-between">
             <p className="mb-2 text-xl font-medium tracking-tight text-gray-900 dark:text-white">
               {member.name}
             </p>
-            <button>
+            <button
+              id="new-member-btn"
+              onClick={() => {
+                console.log("clicked");
+                deleteMember(dispatchProjects, member);
+              }}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -39,10 +45,6 @@ export default function MemberListItems() {
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className="w-6 h-6 text-red-600"
-                onClick={() => {
-                  console.log("clicked");
-                  deleteMember(dispatchProjects, member);
-                }}
               >
                 <path
                   strokeLinecap="round"
