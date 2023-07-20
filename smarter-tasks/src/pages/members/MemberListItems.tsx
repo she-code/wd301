@@ -32,7 +32,6 @@ export default function MemberListItems() {
               {member.name}
             </p>
             <button
-              id="new-member-btn"
               onClick={() => {
                 console.log("clicked");
                 deleteMember(dispatchProjects, member);
