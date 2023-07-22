@@ -10,11 +10,11 @@ const Members = () => {
         <h2 className="text-2xl font-medium tracking-tight">Members</h2>
         <NewMember />
       </div>
-      <ErrorBoundary>
-        <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+      <Suspense fallback={<div className="suspense-loading">Loading...</div>}>
+        <ErrorBoundary>
           <MemberList />
-        </Suspense>
-      </ErrorBoundary>
+        </ErrorBoundary>
+      </Suspense>
     </>
   );
 };
