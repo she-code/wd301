@@ -15,7 +15,7 @@ const Task = forwardRef<
   const { projectID } = useParams();
   const { task } = props;
   return (
-    <div className="m-2 flex" ref={ref}>
+    <div className="m-2 flex" ref={ref} {...props}>
       <Link
         className="TaskItem w-full shadow-md border border-slate-100 bg-white"
         to={`tasks/${task.id}`}
