@@ -1,11 +1,5 @@
 import React, { Fragment, useState, useEffect } from "react";
 import { Dialog, Transition, Listbox } from "@headlessui/react";
-import {
-  differenceInMinutes,
-  differenceInDays,
-  formatDistanceToNow,
-  differenceInSeconds,
-} from "date-fns";
 
 import { useParams, useNavigate } from "react-router-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
@@ -25,7 +19,6 @@ import {
 import { fetchComments } from "../../context/comment/actions";
 import { CommentDetails } from "../../context/comment/types";
 import CommentItem from "./CommentItem";
-import { getMemberById } from "../../context/members/actions";
 
 type TaskFormUpdatePayload = TaskDetailsPayload & {
   selectedPerson: string;
