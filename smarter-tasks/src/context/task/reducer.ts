@@ -17,8 +17,10 @@ export const taskReducer: Reducer<TaskListState, TaskActions> = (
   switch (action.type) {
     case TaskListAvailableAction.FETCH_TASKS_REQUEST:
       return { ...state, isLoading: true };
-    case TaskListAvailableAction.FETCH_TASKS_SUCCESS:
+    case TaskListAvailableAction.FETCH_TASKS_SUCCESS: {
+      console.log(action.payload, "tasks reducer");
       return { ...state, isLoading: false, projectData: action.payload };
+    }
     case TaskListAvailableAction.FETCH_TASKS_FAILURE:
       return {
         ...state,
