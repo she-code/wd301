@@ -75,3 +75,31 @@ export const deleteMember = async (dispatch: any, args: any) => {
     return { ok: false, error };
   }
 };
+
+//get member by id
+export const getMemberById = async (dispatch: any, args: any) => {
+  try {
+    const token = localStorage.getItem("authToken") ?? "";
+
+    const response = await fetch(`${API_ENDPOINT}/users/${args?.owner}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error("Failed to get member");
+    }
+
+    const data = await response.json();
+
+    dispatch({ type: "GET_MEMBER_SUCCESS", payload: data });
+
+    return { ok: true };
+  } catch (error) {
+    console.error("Operation failed:", error);
+    return { ok: false, error };
+  }
+};

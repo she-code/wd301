@@ -6,6 +6,7 @@ interface Member {
 }
 export interface MembersState {
   members: Member[];
+  member?: Member;
   isLoading: boolean;
   isError: boolean;
   errorMessage: string;
@@ -19,7 +20,8 @@ export type MembersActions =
       payload: string;
     }
   | { type: "ADD_MEMBER_SUCCESS"; payload: Member }
-  | { type: "DELETE_MEMBER_SUCCESS"; payload: Member };
+  | { type: "DELETE_MEMBER_SUCCESS"; payload: Member }
+  | { type: "GET_MEMBER_SUCCESS"; payload: Member };
 
 export const initialState: MembersState = {
   members: [],
@@ -59,7 +61,11 @@ export const reducer = (
           (member) => member.id !== action.payload.id
         ),
       };
-
+    case "GET_MEMBER_SUCCESS":
+      return {
+        ...state,
+        member: action.payload,
+      };
     default:
       return state;
   }
