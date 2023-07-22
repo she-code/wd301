@@ -1,5 +1,5 @@
 import { MembersProvider } from "../../context/members/context";
-import MemberList from "./MembersList";
+import MemberList from "./MemberList";
 import NewMember from "./NewMember";
 
 const Members = () => {
