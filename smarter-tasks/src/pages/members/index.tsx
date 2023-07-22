@@ -1,5 +1,4 @@
 import { Suspense } from "react";
-import { MembersProvider } from "../../context/members/context";
 import MemberList from "./MemberList";
 import NewMember from "./NewMember";
 import ErrorBoundary from "../../components/ErrorBoundary";
