@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import NewProject from "./NewProject";
 import ProjectList from "./ProjectList";
 import ErrorBoundary from "../../components/ErrorBoundary";
